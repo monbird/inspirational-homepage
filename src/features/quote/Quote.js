@@ -1,32 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-// import {
-//     setSearchTerm,
-//     clearSearchTerm,
-//     selectSearchTerm,
-// } from './searchTermSlice.js';
+import { fetchQuote, selectQuote, selectQuoteStatus } from './quoteSlice';
 
 export const Quote = () => {
-    // const searchTerm = useSelector(selectSearchTerm);
-    // const dispatch = useDispatch();
+    const quote = useSelector(selectQuote);
+    const quoteStatus = useSelector(selectQuoteStatus);
+    const dispatch = useDispatch();
 
-    // const onSearchTermChangeHandler = (e) => {
-    //     const userInput = e.target.value;
-    //     dispatch(setSearchTerm(userInput));
-    // };
-
-    // const onClearSearchTermHandler = () => {
-    //     dispatch(clearSearchTerm());
-    // };
-
-    const quote = 'The way to get started is to quit talking and begin doing';
-    const author = 'Walt Disney';
+    useEffect(() => {
+        dispatch(fetchQuote());
+    }, [dispatch]);
 
     return (
-        <div>
-            <p>{quote}</p>
-            <p>{author}</p>
-        </div>
+        <>
+            {quoteStatus.hasError && (
+                <p>There was a problem fetching the Quote</p>
+            )}
+            {quoteStatus.isLoading && <p>Loading Quote...</p>}
+            <div>
+                <p>{quote.message}</p>
+                <p>{quote.author}</p>
+            </div>
+        </>
     );
 };

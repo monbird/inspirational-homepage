@@ -1,32 +1,24 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-
-// import {
-//     setSearchTerm,
-//     clearSearchTerm,
-//     selectSearchTerm,
-// } from './searchTermSlice.js';
 
 export const Image = () => {
-    // const searchTerm = useSelector(selectSearchTerm);
-    // const dispatch = useDispatch();
-
-    // const onSearchTermChangeHandler = (e) => {
-    //     const userInput = e.target.value;
-    //     dispatch(setSearchTerm(userInput));
-    // };
-
-    // const onClearSearchTermHandler = () => {
-    //     dispatch(clearSearchTerm());
-    // };
-
     const image =
         'https://www.popsci.com/uploads/2021/06/08/bees-drinking-nectar.jpg?auto=webp';
 
     return (
-        <div>
-            <img src={image} alt="inspirational background"></img>
-        </div>
+        <div
+            style={{
+                width: '100%',
+                height: '100%',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                zIndex: -1,
+
+                backgroundImage: `url(${image})`,
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+            }}
+        ></div>
     );
 };
