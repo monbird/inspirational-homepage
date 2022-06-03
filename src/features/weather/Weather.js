@@ -15,7 +15,7 @@ export const Weather = () => {
         dispatch(fetchWeather());
     }, [dispatch]);
 
-    // const icon = 'https://cdn-icons-png.flaticon.com/512/3050/3050031.png';
+    const icon = `img/${weather.icon}.png`;
 
     return (
         <>
@@ -26,7 +26,7 @@ export const Weather = () => {
             <div>
                 <p>{weather.temperature}</p>
                 <p>{weather.description}</p>
-                {/* <img src={icon} alt="temperature icon"></img> */}
+                <img src={icon} alt="temperature icon"></img>
             </div>
         </>
     );

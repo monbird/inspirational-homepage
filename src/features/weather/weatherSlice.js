@@ -14,6 +14,7 @@ const weatherSlice = createSlice({
         weather: {
             temperature: '',
             description: '',
+            icon: '',
         },
         status: {
             isLoading: false,
@@ -29,6 +30,7 @@ const weatherSlice = createSlice({
         [fetchWeather.fulfilled]: (state, action) => {
             state.weather.temperature = action.payload.temperature;
             state.weather.description = action.payload.description;
+            state.weather.icon = action.payload.icon;
             state.status.isLoading = false;
             state.status.hasError = false;
         },

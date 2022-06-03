@@ -32,6 +32,7 @@ const getWeather = async () => {
     return {
         temperature: weather.main.temp.toFixed(1),
         description: weather.weather[0].description,
+        icon: weather.weather[0].icon.substr(0, 2),
     };
 };
 
