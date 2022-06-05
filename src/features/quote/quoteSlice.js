@@ -22,7 +22,7 @@ const quoteSlice = createSlice({
     },
     // no reducers
     extraReducers: {
-        [fetchQuote.pending]: (state, action) => {
+        [fetchQuote.pending]: (state) => {
             state.status.isLoading = true;
             state.status.hasError = false;
         },
@@ -32,7 +32,7 @@ const quoteSlice = createSlice({
             state.status.isLoading = false;
             state.status.hasError = false;
         },
-        [fetchQuote.rejected]: (state, action) => {
+        [fetchQuote.rejected]: (state) => {
             state.status.isLoading = false;
             state.status.hasError = true;
         },

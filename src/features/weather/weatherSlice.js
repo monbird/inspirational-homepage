@@ -23,7 +23,7 @@ const weatherSlice = createSlice({
     },
     // no reducers
     extraReducers: {
-        [fetchWeather.pending]: (state, action) => {
+        [fetchWeather.pending]: (state) => {
             state.status.isLoading = true;
             state.status.hasError = false;
         },
@@ -34,7 +34,7 @@ const weatherSlice = createSlice({
             state.status.isLoading = false;
             state.status.hasError = false;
         },
-        [fetchWeather.rejected]: (state, action) => {
+        [fetchWeather.rejected]: (state) => {
             state.status.isLoading = false;
             state.status.hasError = true;
         },
