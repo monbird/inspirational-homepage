@@ -1,11 +1,12 @@
+import axios from 'axios';
+
 const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 const LOCATION_TOKEN = process.env.REACT_APP_LOCATION_TOKEN;
 
 const getLocation = async () => {
     const url = `https://ipinfo.io/json?token=${LOCATION_TOKEN}`;
-    const response = await fetch(url);
-    const json = await response.json();
-    const location = json.loc;
+    const response = await axios.get(url);
+    const location = response.data.loc;
 
     const locationCoordiantes = location.split(',');
 
@@ -26,8 +27,8 @@ const getWeather = async () => {
 
     const url = getWeatherApiUrl(location.lat, location.lon);
 
-    const response = await fetch(url);
-    const weather = await response.json();
+    const response = await axios.get(url);
+    const weather = response.data;
 
     return {
         temperature: weather.main.temp.toFixed(1),
